@@ -5,12 +5,10 @@
 int len( char *source ){
   int counter = 0;
   char *cp = source;
-  
   while(*cp){
     counter++;
     cp++;
   }
-  
   return counter;
 }
 char * ncpy( char *dest, char *source, int n){
