@@ -21,7 +21,14 @@ char * ncpy( char *dest, char *source, int n){
   return dest;
 }
 char * cat( char *dest, char *source ){
-  return 0;
+  while(*source!=0){
+    if(*dest=0){
+      *dest=*source;
+      *source++;
+    }
+    *dest++;
+  }
+  return dest;
 }
 int cmp( char *s1, char *s2 ){
   return 0;
@@ -43,6 +50,9 @@ int main(){
   //printf("s1 cpy: %s\n", ncpy(s2,s1,3)); //heldbye
   //printf("s1 cpy: %s\n", strncpy(s1,s2,6)); //goodby
   //printf("s1 cpy: %s\n", ncpy(s1,s2,6)); //goodby
+
+  //printf("s1 cat: %s\n", strcat(s1,s2)); //hellogoodbye
+  printf("s1 cat: %s\n", cat(s1,s2));
   
   return 0;
 }
