@@ -60,6 +60,17 @@ int cmp( char *s1, char *s2 ){
   }
   return *s1 - *s2;
 }
+int ncmp( char *s1, char *s2, int n){
+    while( *s1 == *s2 ){
+        *(s1++);
+        *(s2++);
+        n--;
+        if(n==0){
+            return 0;
+        }
+    }
+    return *s1 - *s2;
+}
 char * chr( char *s, char c ){
   while(*s){
       if(*s == c){
@@ -116,10 +127,18 @@ int main(){
   //printf("s1 cat4 to s2: %s\n", strncat(s2,s1,4)); //goodbyehell
   //printf("s1 cat4 to s2: %s\n\n", ncat(s2,s1,4)); //goodbyehell
 
+  char n1[10]="grace";
+  char n2[10]="gracious";
   printf("s1(h) to s2(g): %i\n", strcmp(s1,s2)); //1
   printf("s1(g) to s2(h): %i\n", cmp(s1,s2)); //-1
   printf("s2(g) to s1(h): %i\n", strcmp(s2,s1)); //-1
-  printf("s2(g) to s1(h): %i\n\n", cmp(s2,s1)); //-1
+  printf("s2(g) to s1(h): %i\n", cmp(s2,s1)); //-1
+  printf("grace to gracious: %i\n", strcmp(n1, n2)); //-4
+  printf("grace to gracious: %i\n", cmp(n1, n2)); //-4
+  printf("grace cmp4 gracious: %i\n", strncmp(n1, n2, 4)); //0
+  printf("grace cmp4 gracious: %i\n", ncmp(n1, n2, 4)); //0
+  printf("grace cmp5 gracious: %i\n", strncmp(n1, n2, 5)); //-4
+  printf("grace cmp5 gracious: %i\n\n", ncmp(n1, n2, 5)); //-4
 
   printf("chr s1, l: %s\n", strchr(s1,'l')); //llo
   printf("chr s1, l: %s\n", chr(s1,'l')); //llo
